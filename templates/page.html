@@ -1,0 +1,83 @@
+<html>
+
+    <style>
+        #logo {
+            width: 7em;
+            height: 7em;
+            margin-left: 1em;
+            padding: 0.5em;
+        }
+
+        #label {
+            font-family: Arial;
+            font-size: 32pt;
+            font-weight: 600;
+            padding: 0.5em;
+        }
+
+        #description {
+            font-family: Arial;
+            font-size: 16pt;
+            margin-bottom: 1.5em;
+            margin-left: 1em;
+        }
+
+        #back {
+            font-family: Arial;
+            font-size: 12pt;
+            font-weight: 700;
+
+            color: #353535;
+
+            margin-left: 1em;
+            margin-bottom: 4em;
+
+            padding: 0.5em;
+
+            background-color: rgb(96, 175, 204);
+            border-radius: 6px;
+
+            box-shadow: 1px 1px 1px rgba(66, 66, 66, 0.2);
+            outline: none;
+        }
+
+        #back:disabled {
+            color: #999999;
+            background-color: rgb(180, 180, 180);
+        }
+
+        .link, .link:visited {
+            font-family: Arial;
+            font-size: 12pt;
+            margin-left: 1em;
+
+            color: rgba(68, 68, 68, 0.93);
+        }
+
+        #subs {
+            font-family: Arial;
+            font-size: 16pt;
+            font-weight: 600;
+        }
+    </style>
+
+    <body>
+        <img id="logo" src="/logo.png">
+        <div id="label">${label}</div>
+
+        <div id="description">${description}</div>
+
+        <form action="${parent}">
+            <button id="back"> <<< Go Back</button>
+        </form>
+        <label id="subs">Sub-Topics:</label>
+        ${subs}
+    </body>
+    <script>
+        document.getElementById("back").disabled = ("${is_root}" == "True");
+
+        if(typeof document.getElementsByClassName("link")[0] === 'undefined') {
+            document.getElementById("subs").innerText = "";
+        }
+    </script>
+</html>
